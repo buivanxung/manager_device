@@ -139,7 +139,26 @@
     </div>
     <div>
         <div class="data">
-            <p>Data</p>
+                <table border="1">
+                        <tr bgcolor = "#aaffff">
+                        <td>Token</td>
+                        <td>Host</td>
+                        <td>Email</td>
+                        <td>Project_id</td>
+                        <td>Device_id</td>
+                        <td>Time</td>
+                        </tr>
+                        <% list.rows.forEach(function(d) { %>
+                          <tr>
+                        <td><%= d.token %></td>
+                        <td><%= d.host %></td>
+                        <td><%= d.email %></td>
+                        <td><%= d.project_id %></td>
+                        <td><%= d.device_id %></td>
+                        <td><%= d.ts %></td>
+                        </tr>
+                      <% }); %>
+                 </table>
             </div>
     </div>
 </body>

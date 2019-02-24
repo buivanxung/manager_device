@@ -18,10 +18,6 @@ var configpg = {
 var pool = new pg.Pool(configpg);
 
 app.get('/', function(req, res){
-  res.render('index');
-});
-io.on('connection', function (socket) {
-    console.log("New connection");
     pool.connect(function (err, client, done) {
 	    if (err) {
 	      return console.error('error fetching client from pool', err)
@@ -30,12 +26,29 @@ io.on('connection', function (socket) {
 	      done();
 
 	      if (err) {
+            res.end();
             return console.error('error happened during query', err)
 	      }
-           console.log( " Gia tri muon in: " + JSON.stringify(result));
-	       // res.render("index",{list:result});
+	        res.render("index",{list:result});
 	  });
     })
+});
+io.on('connection', function (socket) {
+    console.log("New connection");
+    // pool.connect(function (err, client, done) {
+	//     if (err) {
+	//       return console.error('error fetching client from pool', err)
+	//     }
+	//     client.query('SELECT * FROM forwarding_tokens', function (err, result) {
+	//       done();
+
+	//       if (err) {
+    //         return console.error('error happened during query', err)
+	//       }
+    //        console.log( " Gia tri muon in: " + JSON.stringify(result));
+	//         res.render("index",{list:result});
+	//   });
+    // })
     socket.on('disconect', function (){
     console.log(" Disconnect");
     });
