@@ -32,7 +32,7 @@ io.on('connection', function (socket) {
 	      if (err) {
 	        return console.error('error happened during query', err)
 	      }
-           console.log( " Gia tri muon in: " + result.rows[0]);
+           console.log( " Gia tri muon in: " + result);
 	        //res.render("showdata.ejs",{list:result});
 	  });
     })
