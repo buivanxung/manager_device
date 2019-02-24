@@ -2,10 +2,9 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
-//app.set('views', __dirname + '/app/server/views');
 
 
 var pg = require('pg')
