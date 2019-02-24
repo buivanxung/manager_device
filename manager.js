@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
 	//         res.render("index",{list:result});
 	//   });
     // })
-    socket.on('disconect', function (){
+    socket.on('disconnect', function (){
     console.log(" Disconnect");
     });
       
