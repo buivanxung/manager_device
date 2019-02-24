@@ -26,11 +26,10 @@ io.on('connection', function (socket) {
 	    if (err) {
 	      return console.error('error fetching client from pool', err)
 	    }
-	    client.query('SELECT * FROM lora_imst', function (err, result) {
+	    client.query('SELECT * FROM forwarding tokens', function (err, result) {
 	      done();
 
 	      if (err) {
-	        res.end();
 	        return console.error('error happened during query', err)
 	      }
            console.log( " Gia tri muon in: " + result.rows[0]);
