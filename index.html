@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title> Blynk Management Device Seri Number</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>   
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/process.js"></script>
+</head>
+<body>
+    <div class="center">
+        <p>Management Devices through Serial Number</p>
+    </div>
+    <div class="tool_select">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#add_new">New Device</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#update">Update Infor Device</button>
+    </div>
+    <div class="center">
+    </div>
+    <div id="add_new" class="collapse">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    Name Product:<br>
+                    <select name="cars">
+                            <option value="volvo">Volvo XC90</option>
+                            <option value="saab">Saab 95</option>
+                            <option value="mercedes">Mercedes SLK</option>
+                            <option value="audi">Audi TT</option>
+                        </select>
+                </div>
+                <div class="col-sm-3">
+                    Email user: <br>
+                    <input type="email" name="lname">
+                </div>
+                <div class="col-sm-3">
+                    Token: <br>
+                    <input type="text" name="lname">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    Seri Number: <br>
+                    <input type="text" name="lname">
+                </div>
+                <div class="col-sm-3">
+                    Date: <br>
+                    <input type="date" data-date-format="DD MMMM YYYY" name="lname">
+                </div>
+                <div class="col-sm-3">
+                    Admin: <br>
+                    <select name="cars">
+                        <option value="volvo">Volvo XC90</option>
+                        <option value="saab">Saab 95</option>
+                        <option value="mercedes">Mercedes SLK</option>
+                        <option value="audi">Audi TT</option>
+                    </select>
+                </div>
+                <div class="center">
+                        <button type="button" class="btn btn-info">Submit</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        </div>
+    <div id = "update" class="collapse">
+        <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Name Product:<br>
+                        <select name="cars">
+                                <option value="volvo">Volvo XC90</option>
+                                <option value="saab">Saab 95</option>
+                                <option value="mercedes">Mercedes SLK</option>
+                                <option value="audi">Audi TT</option>
+                            </select>
+                    </div>
+                    <div class="col-sm-3">
+                        Email user: <br>
+                        <select name="cars">
+                                <option value="volvo">Volvo XC90</option>
+                                <option value="saab">Saab 95</option>
+                                <option value="mercedes">Mercedes SLK</option>
+                                <option value="audi">Audi TT</option>
+                            </select>
+                    </div>
+                    <div class="col-sm-3">
+                        Last Token: <br>
+                        <select name="cars">
+                                <option value="volvo">Volvo XC90</option>
+                                <option value="saab">Saab 95</option>
+                                <option value="mercedes">Mercedes SLK</option>
+                                <option value="audi">Audi TT</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Seri Number: <br>
+                        <select name="cars">
+                                <option value="volvo">Volvo XC90</option>
+                                <option value="saab">Saab 95</option>
+                                <option value="mercedes">Mercedes SLK</option>
+                                <option value="audi">Audi TT</option>
+                            </select>
+                    </div>
+                    <div class="col-sm-3">
+                        New Token: <br>
+                        <select name="cars">
+                                <option value="volvo">Volvo XC90</option>
+                                <option value="saab">Saab 95</option>
+                                <option value="mercedes">Mercedes SLK</option>
+                                <option value="audi">Audi TT</option>
+                            </select>
+                    </div>
+                    <div class="col-sm-3">
+                        Admin: <br>
+                        <select name="cars">
+                            <option value="volvo">Volvo XC90</option>
+                            <option value="saab">Saab 95</option>
+                            <option value="mercedes">Mercedes SLK</option>
+                            <option value="audi">Audi TT</option>
+                        </select>
+                    </div>
+                    <div class="center">
+                            <button type="button" class="btn btn-info">Submit</button>
+                        </div>
+                </div>
+            </div>
+    </div>
+    <div class="center">
+        Information Data Devices And Users
+    </div>
+    <div>
+        <div class="data">
+            <p>Data</p>
+            </div>
+    </div>
+</body>
+</html>

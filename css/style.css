@@ -1,0 +1,24 @@
+.center {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+}
+.input {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+.tool_select {
+    border-bottom: 6px solid rgb(247, 198, 142);
+}
+.data {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 50px;
+    border: 2px solid rgb(209, 207, 207);
+    border-radius: 5px;
+    background-color: rgb(250, 251, 252);
+}
