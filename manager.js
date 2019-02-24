@@ -26,7 +26,7 @@ io.on('connection', function (socket) {
 	    if (err) {
 	      return console.error('error fetching client from pool', err)
 	    }
-	    client.query('SELECT * FROM forwarding tokens', function (err, result) {
+	    client.query('SELECT * FROM forwarding_tokens', function (err, result) {
 	      done();
 
 	      if (err) {
