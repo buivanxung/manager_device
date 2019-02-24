@@ -30,10 +30,10 @@ io.on('connection', function (socket) {
 	      done();
 
 	      if (err) {
-	        return console.error('error happened during query', err)
+            return console.error('error happened during query', err)
 	      }
-           console.log( " Gia tri muon in: " + result);
-	        //res.render("showdata.ejs",{list:result});
+           console.log( " Gia tri muon in: " + JSON.stringify(result));
+	       // res.render("index",{list:result});
 	  });
     })
     socket.on('disconect', function (){
