@@ -25,7 +25,7 @@ app.get('/', function(req, res){
 	    if (err) {
 	      return console.error('error fetching client from pool', err)
 	    }
-	    client.query('SELECT * FROM forwarding_tokens', function (err, result) {
+	    client.query('SELECT * FROM forwarding_tokens ORDER BY ts ASC', function (err, result) {
 	      done();
 
 	      if (err) {
@@ -38,20 +38,23 @@ app.get('/', function(req, res){
 });
 io.on('connection', function (socket) {
     console.log("New connection");
-    // pool.connect(function (err, client, done) {
-	//     if (err) {
-	//       return console.error('error fetching client from pool', err)
-	//     }
-	//     client.query('SELECT * FROM forwarding_tokens', function (err, result) {
-	//       done();
-
-	//       if (err) {
-    //         return console.error('error happened during query', err)
-	//       }
-    //        console.log( " Gia tri muon in: " + JSON.stringify(result));
-	//         res.render("index",{list:result});
-	//   });
-    // })
+    socket.on("request_data", function(data){
+        pool.connect(function (err, client, done) {
+            if (err) {
+              return console.error('error fetching client from pool', err)
+            }
+            client.query('SELECT token,email FROM forwarding_tokens', function (err, result) {
+              done();
+    
+              if (err) {
+                return console.error('error happened during query', err)
+              }
+               console.log( " Gia tri muon in: " + JSON.stringify(result));
+                
+          });
+        })
+    })
+    
     socket.on('disconnect', function (){
     console.log(" Disconnect");
     });
