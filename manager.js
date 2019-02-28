@@ -56,14 +56,14 @@ io.on('connection', function (socket) {
     })
 
     socket.on("new_data", function(data){
-      console.log(data);
+      console.log(JSON.stringtify(data));
       var d_string = data.split('&'),
       seri_number = d_string[0],
       last_token = d_string[1],
       email = d_string[2],
       name_product = d_string[3],
       editor = d_string[4],
-      date = d_string[5],
+      date = Date.now(),
       created_at = Date.now();
       pool.connect(function (err, client, done) {
           if (err) {
@@ -99,7 +99,7 @@ io.on('connection', function (socket) {
     email = d_string[2],
     name_product = d_string[3],
     editor = d_string[4],
-    updated_at = Date.now();
+    updated_at = new Date();
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
