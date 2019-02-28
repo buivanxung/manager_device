@@ -18,7 +18,7 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
           }
         });
         socket.on('show_data', function (data) {
-           console.log(data);
+           console.log(JSON.stringify(data));
            
         });
         new_email = $("input[name='new_email']");

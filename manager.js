@@ -56,7 +56,7 @@ io.on('connection', function (socket) {
     })
 
     socket.on("new_data", function(data){
-      console.log(JSON.stringtify(data));
+      console.log(JSON.stringify(data));
       var d_string = data.split('&'),
       seri_number = d_string[0],
       last_token = d_string[1],
