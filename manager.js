@@ -64,7 +64,7 @@ io.on('connection', function (socket) {
       name_product = d_string[3],
       editor = d_string[4],
       date = d_string[5],
-      created_at = NOW();
+      created_at = new Date();
       pool.connect(function (err, client, done) {
           if (err) {
             return console.error('error fetching client from pool', err)
