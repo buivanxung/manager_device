@@ -34,6 +34,7 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
     });
     function onSubmitNewdata(){
       infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
+      console.log(infor_data);
       socket.emit("new_data",infor_data);
     }
     function onSubmitNewdata(){
