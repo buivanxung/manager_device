@@ -63,13 +63,12 @@ io.on('connection', function (socket) {
       email = d_string[2],
       name_product = d_string[3],
       editor = d_string[4],
-      date = Date.now(),
-      created_at = Date.now();
+      date = d_string[5];
       pool.connect(function (err, client, done) {
           if (err) {
             return console.error('error fetching client from pool', err)
           }
-          client.query("INSERT INTO blynk_data (seri_number,last_token,email,name_product,editor,date,created_at) VALUES('"+seri_number+"','"+last_token+"','"+email+"','"+name_product+"','"+editor+"','"+date+"','"+created_at+"')", function (err, result) {
+          client.query("INSERT INTO blynk_data (seri_number,last_token,email,name_product,editor,date,created_at) VALUES('"+seri_number+"','"+last_token+"','"+email+"','"+name_product+"','"+editor+"','"+date+"','NOW()')", function (err, result) {
             done();
   
             if (err) {
@@ -104,7 +103,7 @@ io.on('connection', function (socket) {
         if (err) {
           return console.error('error fetching client from pool', err)
         }
-        client.query("update blynk_data set last_token = "+last_token+",new_token = "+new_token+",email = "+email+",name_product = "+name_product+",editor = "+editor+",update_at = "+updated_at+") where seri_number = "+seri_number+"", function (err, result) {
+        client.query("update blynk_data set last_token = "+last_token+",new_token = "+new_token+",email = "+email+",name_product = "+name_product+",editor = "+editor+",update_at = NOW()) where seri_number = "+seri_number+"", function (err, result) {
           done();
 
           if (err) {
