@@ -99,7 +99,7 @@ io.on('connection', function (socket) {
     email = d_string[2],
     name_product = d_string[3],
     editor = d_string[4],
-    updated_at = NOW();
+    updated_at = new Date();
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
