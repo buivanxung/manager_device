@@ -54,6 +54,76 @@ io.on('connection', function (socket) {
           });
         })
     })
+
+    socket.on("new_data", function(data){
+      var d_string = data.split('&'),
+      seri_number = d_string[0],
+      last_token = d_string[1],
+      email = d_string[2],
+      name_product = d_string[3],
+      editor = d_string[4],
+      date = d_string[5],
+      created_at = NOW();
+      pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error('error fetching client from pool', err)
+          }
+          client.query("INSERT INTO blynk_data (seri_number,last_token,email,name_product,editor,date,created_at) VALUES('"+seri_number+"','"+last_token+"','"+email+"','"+name_product+"','"+editor+"','"+date+"','"+created_at+"')", function (err, result) {
+            done();
+  
+            if (err) {
+              return console.error('error happened during query', err)
+            }
+             console.log("Insert Ok");
+             socket.emit("insert_data","OK");
+
+             client.query('SELECT * FROM blynk_data', function (err, result_All) {
+              done();
+    
+              if (err) {
+                return console.error('error happened during query', err)
+              }
+              socket.emit("show_data",result_All);
+            })
+              
+        });
+      })
+  })
+
+  socket.on("update_data", function(data){
+    var d_string = data.split('&'),
+    seri_number = d_string[0],
+    last_token = d_string[1],
+    new_token = d_string[5],
+    email = d_string[2],
+    name_product = d_string[3],
+    editor = d_string[4],
+    updated_at = NOW();
+    pool.connect(function (err, client, done) {
+        if (err) {
+          return console.error('error fetching client from pool', err)
+        }
+        client.query("update blynk_data set last_token = "+last_token+",new_token = "+new_token+",email = "+email+",name_product = "+name_product+",editor = "+editor+",update_at = "+updated_at+") where seri_number = "+seri_number+"", function (err, result) {
+          done();
+
+          if (err) {
+            return console.error('error happened during query', err)
+          }
+           console.log("Update data Ok");
+           socket.emit("update_data","OK");
+
+           client.query('SELECT * FROM blynk_data', function (err, result_All) {
+            done();
+  
+            if (err) {
+              return console.error('error happened during query', err)
+            }
+            socket.emit("show_data",result_All);
+          })
+            
+      });
+    })
+})
     
     socket.on('disconnect', function (){
     console.log(" Disconnect");
