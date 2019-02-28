@@ -12,7 +12,7 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
            alert("Insert New Data Success!")
           }
         });
-        ocket.on('update_data', function (data) {
+        socket.on('update_data', function (data) {
           if (data = "OK") {
            alert("Update Data Success!")
           }
