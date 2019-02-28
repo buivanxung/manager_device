@@ -37,6 +37,6 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
       console.log(infor_data);
       socket.emit("new_data",infor_data);
     }
-    function onSubmitNewdata(){
+    function onSubmitUpdatedata(){
       socket.emit("update_data",infor_data_update);
     }
