@@ -1,5 +1,6 @@
 var socket;
 var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,new_seri_number,new_token;
+var etable = "";
        $(document).ready(function() {
         socket = io.connect('http://wirelesstech.online:5060',{
           reconnection: true,
@@ -18,8 +19,8 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
           }
         });
         socket.on('show_data', function (data) {
-           console.log(JSON.stringify(data));
-           
+           console.log(paseData(data));
+           $("#print_data").val() = paseData(data);
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -36,4 +37,22 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
     }
     function onSubmitUpdatedata(){
       socket.emit("update_data",infor_data_update);
+    }
+    function paseData(object) {
+      etable = "<table id = log_data> <tr> ";
+      for (var i = 0; i < object.lengh();i++){
+        etable += "<td>" + object[i].id + "</td>" +
+        "<td>" + object[i].seri_number + "</td>"+
+        "<td>" + object[i].last_token + "</td>"+
+        "<td>" + object[i].new_token + "</td>"+
+        "<td>" + object[i].email + "</td>"+
+        "<td>" + object[i].name_product + "</td>"+
+        "<td>" + object[i].editor + "</td>"+
+        "<td>" + object[i].date + "</td>"+
+        "<td>" + object[i].created_at + "</td>"+
+        "<td>" + object[i].updated_at + "</td>"+
+        "<td>" + object[i].deleted_at + "</td>";
+      }
+      etable += "</tr></table>";
+      return etable;
     }
