@@ -19,6 +19,7 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
            alert("Update Data Success!");
           }
         });
+        var update_last_token,update_seri_number,update_email, update_admin, update_new_token;
         socket.on('show_data', function (data) {
            $("#print_data").html(paseData(data));
            $("#update_seri" ).html(paseDataSeclect(data,1));
@@ -38,8 +39,6 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
         update_email = $("input[name='update_email']").val();
         update_new_token = $("input[name='update_new_token']").val();
         infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
-        console.log(update_last_token + update_last_token);
-        
     });
     function onSubmitNewdata(){
       socket.emit("new_data",infor_data);
