@@ -53,7 +53,7 @@ io.on('connection', function (socket) {
         })
     })
     }, 5000);
-    
+
     socket.on("new_data", function(data){
       var d_string = data.split('&'),
       seri_number = d_string[0],
@@ -74,15 +74,6 @@ io.on('connection', function (socket) {
             }
              socket.emit("insert_data","OK");
           });
-
-          client.query('SELECT * FROM blynk_data', function (err, result_All) {
-            done();
-
-            if (err) {
-              return console.error('error happened during query', err)
-            }
-            socket.emit("show_data",result_All.rows);
-          })
       })
   })
 
@@ -106,16 +97,8 @@ io.on('connection', function (socket) {
           }
            socket.emit("update_data","OK");
         });
-        client.query('SELECT seri_number,last_token,email,name_product,editor,date,created_at FROM blynk_data', function (err, result_All) {
-          done();
-
-          if (err) {
-            return console.error('error happened during query', err)
-          }
-          socket.emit("show_data",result_All.rows);
-        })
     })
-})
+  })
     
     socket.on('disconnect', function (){
     console.log(" Disconnect");
