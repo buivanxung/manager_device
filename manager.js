@@ -37,7 +37,6 @@ app.get('/', function(req, res){
     })
 });
 io.on('connection', function (socket) {
-    console.log("New connection");
     setInterval(function() {
       pool.connect(function (err, client, done) {
         if (err) {
@@ -100,7 +99,6 @@ io.on('connection', function (socket) {
   })
     
     socket.on('disconnect', function (){
-    console.log(" Disconnect");
     });
       
   });
