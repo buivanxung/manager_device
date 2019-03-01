@@ -28,10 +28,10 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
         new_token = $("input[name='new_token']").val();
         new_seri_number = $("input[name='new_seri_number']").val();
         new_date = $("input[name='new_date']").val();
-        new_name_product = $( "#new_name_product" ).val();
-        new_admin = $( "#new_admin" ).val();
+        new_name_product = $("#new_name_product" ).val();
+        new_admin = $("#new_admin" ).val();
         infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
-        update_admin = $("input[name='update_admin']").val();
+        update_admin = $("#update_admin").val();
         update_email = $("input[name='update_email']").val();
         update_last_token = $("#update_last_token").val();
         update_seri_number = $("#update_seri_number").val();
