@@ -20,7 +20,7 @@ var etable = "";
         });
         socket.on('show_data', function (data) {
            $("#print_data").html(paseData(data));
-           socket.close();
+           socket.destroy();
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -32,7 +32,6 @@ var etable = "";
     });
     function onSubmitNewdata(){
       socket.emit("new_data",infor_data);
-      socket.close();
     }
     function onSubmitUpdatedata(){
       socket.emit("update_data",infor_data_update);
