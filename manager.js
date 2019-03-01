@@ -88,7 +88,7 @@ io.on('connection', function (socket) {
         if (err) {
           return console.error('error fetching client from pool', err)
         }
-        client.query("update blynk_data set last_token = '"+last_token+"',new_token = '"+new_token+"',email = '"+email+"',editor = '"+editor+"',update_at = 'NOW()') where seri_number = '"+seri_number+"'", function (err, result) {
+        client.query("update blynk_data set last_token = '"+last_token+"',new_token = '"+new_token+"',email = '"+email+"',editor = '"+editor+"',update_at = 'NOW()' where seri_number = '"+seri_number+"'", function (err, result) {
           done();
 
           if (err) {
