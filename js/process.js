@@ -23,9 +23,6 @@ var etable = "";
            $("#print_data").html(paseData(data));
            $("#update_seri" ).html(paseDataSeclect(data,1));
            $("#update_last" ).html(paseDataSeclect(data,2));
-           update_last_token = $("#update_last").val();
-           update_seri_number = $("#update_seri").val();
-           infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -37,6 +34,10 @@ var etable = "";
         update_admin = $("#update_admin").val();
         update_email = $("input[name='update_email']").val();
         update_new_token = $("input[name='update_new_token']").val();
+        update_last_token = $("#update_last").val();
+        update_seri_number = $("#update_seri").val();
+        infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
+
     });
     function onSubmitNewdata(){
       socket.emit("new_data",infor_data);
@@ -59,7 +60,6 @@ var etable = "";
       "<td> Date</td>"+
       "<td> Created At</td>"+
       "<td> Update At</td>"+
-      "<td> Deleted At</td>"+
       "</tr> ";
       for (var i = 0; i < object.length;i++){
         etable += "<tr> <td>" + object[i].id + "</td>" +
@@ -71,8 +71,7 @@ var etable = "";
         "<td>" + object[i].editor + "</td>"+
         "<td>" + object[i].date + "</td>"+
         "<td>" + object[i].created_at + "</td>"+
-        "<td>" + object[i].updated_at + "</td>"+
-        "<td>" + object[i].deleted_at + "</td> </tr>";
+        "<td>" + object[i].updated_at + "</td>";
       }
       etable += "</table>";
       return etable;
