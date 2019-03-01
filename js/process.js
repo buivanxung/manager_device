@@ -1,7 +1,7 @@
 var socket;
 var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,new_seri_number,new_token;
 var etable = "";
-var update_last_token,update_seri_number,update_email, update_admin, update_new_token;
+var update_last_token,update_seri_number,update_email, update_admin, update_new_token = "";
        $(document).ready(function() {
         socket = io.connect('http://wirelesstech.online:5060',{
           reconnection: true,
