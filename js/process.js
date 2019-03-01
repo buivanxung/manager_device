@@ -39,7 +39,19 @@ var etable = "";
       socket.emit("update_data",infor_data_update);
     }
     function paseData(object) {
-      etable = "<table id = log_data> <tr> ";
+      etable = "<table id = log_data> <tr>"+
+      "<td> STT </td>"+
+      "<td> Serial Number</td>"+
+      "<td> Last Token</td>"+
+      "<td> New Token</td>"+
+      "<td> Email</td>"+
+      "<td> Name Product</td>"+
+      "<td> Editor </td>"+
+      "<td> Date</td>"+
+      "<td> Created At</td>"+
+      "<td> Update At</td>"+
+      "<td> Deleted At</td>"+
+      "</tr> <tr> ";
       for (var i = 0; i < object.length;i++){
         etable += "<td>" + object[i].id + "</td>" +
         "<td>" + object[i].seri_number + "</td>"+
