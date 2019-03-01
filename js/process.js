@@ -42,6 +42,7 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
       socket.emit("new_data",infor_data);
     }
     function onSubmitUpdatedata(){
+      console.log(infor_data_update);
       socket.emit("update_data",infor_data_update);
     }
     function paseData(object) {
