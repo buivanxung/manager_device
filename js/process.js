@@ -51,9 +51,9 @@ var etable = "";
       "<td> Created At</td>"+
       "<td> Update At</td>"+
       "<td> Deleted At</td>"+
-      "</tr> <tr> ";
+      "</tr> ";
       for (var i = 0; i < object.length;i++){
-        etable += "<td>" + object[i].id + "</td>" +
+        etable += "<tr> <td>" + object[i].id + "</td>" +
         "<td>" + object[i].seri_number + "</td>"+
         "<td>" + object[i].last_token + "</td>"+
         "<td>" + object[i].new_token + "</td>"+
@@ -63,8 +63,8 @@ var etable = "";
         "<td>" + object[i].date + "</td>"+
         "<td>" + object[i].created_at + "</td>"+
         "<td>" + object[i].updated_at + "</td>"+
-        "<td>" + object[i].deleted_at + "</td>";
+        "<td>" + object[i].deleted_at + "</td> </tr>";
       }
-      etable += "</tr></table>";
+      etable += "</table>";
       return etable;
     }
