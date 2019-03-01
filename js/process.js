@@ -21,10 +21,10 @@ var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,
            console.log(JSON.stringify(data));
            
         });
-        new_email = $("input[name='new_email']");
-        new_token = $("input[name='new_token']");
-        new_seri_number = $("input[name='new_seri_number']");
-        new_date = $("input[name='new_date']");
+        new_email = $("input[name='new_email']").val();
+        new_token = $("input[name='new_token']").val();
+        new_seri_number = $("input[name='new_seri_number']").val();
+        new_date = $("input[name='new_date']").val();
         var new_name_product = $( "#new_name_product" ).val();
         var new_admin = $( "#new_admin" ).val();
         infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
