@@ -37,7 +37,7 @@ app.get('/', function(req, res){
     })
 });
 io.on('connection', function (socket) {
-    setInterval(function() {
+  socket.on("request_data", function(data){
       pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
@@ -51,7 +51,7 @@ io.on('connection', function (socket) {
           socket.emit("show_data",result_All.rows);
         })
     })
-    }, 5000);
+    });
 
     socket.on("new_data", function(data){
       var d_string = data.split('&'),

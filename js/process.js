@@ -26,7 +26,6 @@ var etable = "";
            update_last_token = $("#update_last").val();
            update_seri_number = $("#update_seri").val();
            infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
-           console.log(update_last_token + update_last_token);
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -41,10 +40,12 @@ var etable = "";
     });
     function onSubmitNewdata(){
       socket.emit("new_data",infor_data);
+      socket.emit("request_data","");
     }
     function onSubmitUpdatedata(){
       console.log(infor_data_update);
       socket.emit("update_data",infor_data_update);
+      socket.emit("request_data","");
     }
     function paseData(object) {
       etable = "<table id = log_data> <tr>"+
@@ -94,4 +95,7 @@ var etable = "";
         }
       }
       
+    }
+    function onGetdata(){
+      socket.emit("request_data","");
     }
