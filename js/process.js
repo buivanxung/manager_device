@@ -25,7 +25,8 @@ var etable = "";
            $("#update_last" ).html(paseDataSeclect(data,2));
            update_last_token = $("#update_last").val();
            update_seri_number = $("#update_seri").val();
-           
+           infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
+           console.log(update_last_token + update_last_token);
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -37,9 +38,6 @@ var etable = "";
         update_admin = $("#update_admin").val();
         update_email = $("input[name='update_email']").val();
         update_new_token = $("input[name='update_new_token']").val();
-        infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
-        console.log(update_last_token + update_last_token);
-        
     });
     function onSubmitNewdata(){
       socket.emit("new_data",infor_data);
