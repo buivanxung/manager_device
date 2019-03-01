@@ -33,8 +33,8 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
         infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
         update_admin = $("#update_admin").val();
         update_email = $("input[name='update_email']").val();
-        update_last_token = $("#updated_last_token").val();
-        update_seri_number = $("#updated_seri_number").val();
+        update_last_token = $("#update_last_token").val();
+        update_seri_number = $("#update_seri_number").val();
         update_new_token = $("input[name='update_new_token']").val();
         infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
     });
