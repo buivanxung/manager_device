@@ -19,20 +19,17 @@ var etable = "";
           }
         });
         socket.on('show_data', function (data) {
-           console.log(paseData(data));
            $("#print_data").html(paseData(data));
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
         new_seri_number = $("input[name='new_seri_number']").val();
         new_date = $("input[name='new_date']").val();
-        var new_name_product = $( "#new_name_product" ).val();
-        var new_admin = $( "#new_admin" ).val();
+        new_name_product = $( "#new_name_product" ).val();
+        new_admin = $( "#new_admin" ).val();
         infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
-        console.log(infor_data);
     });
     function onSubmitNewdata(){
-      console.log(infor_data);
       socket.emit("new_data",infor_data);
     }
     function onSubmitUpdatedata(){

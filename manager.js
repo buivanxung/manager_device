@@ -74,7 +74,6 @@ io.on('connection', function (socket) {
             if (err) {
               return console.error('error happened during query', err)
             }
-             console.log("Insert Ok");
              socket.emit("insert_data","OK");
 
              client.query('SELECT * FROM blynk_data', function (err, result_All) {
@@ -97,8 +96,7 @@ io.on('connection', function (socket) {
     new_token = d_string[5],
     email = d_string[2],
     name_product = d_string[3],
-    editor = d_string[4],
-    updated_at = new Date();
+    editor = d_string[4];
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
@@ -109,7 +107,6 @@ io.on('connection', function (socket) {
           if (err) {
             return console.error('error happened during query', err)
           }
-           console.log("Update data Ok");
            socket.emit("update_data","OK");
 
            client.query('SELECT seri_number,last_token,email,name_product,editor,date,created_at FROM blynk_data', function (err, result_All) {
