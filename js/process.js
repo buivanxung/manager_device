@@ -10,17 +10,16 @@ var etable = "";
         });
   			socket.on('insert_data', function (data) {
           if (data = "OK") {
-           alert("Insert New Data Success!")
+           alert("Insert New Data Success!");
           }
         });
         socket.on('update_data', function (data) {
           if (data = "OK") {
-           alert("Update Data Success!")
+           alert("Update Data Success!");
           }
         });
         socket.on('show_data', function (data) {
            $("#print_data").html(paseData(data));
-           socket.destroy();
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -35,7 +34,6 @@ var etable = "";
     }
     function onSubmitUpdatedata(){
       socket.emit("update_data",infor_data_update);
-      socket.close();
     }
     function paseData(object) {
       etable = "<table id = log_data> <tr>"+

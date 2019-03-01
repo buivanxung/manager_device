@@ -75,17 +75,16 @@ io.on('connection', function (socket) {
               return console.error('error happened during query', err)
             }
              socket.emit("insert_data","OK");
+          });
 
-             client.query('SELECT * FROM blynk_data', function (err, result_All) {
-              done();
-    
-              if (err) {
-                return console.error('error happened during query', err)
-              }
-              socket.emit("show_data",result_All.rows);
-            })
-              
-        });
+          client.query('SELECT * FROM blynk_data', function (err, result_All) {
+            done();
+
+            if (err) {
+              return console.error('error happened during query', err)
+            }
+            socket.emit("show_data",result_All.rows);
+          })
       })
   })
 
@@ -109,13 +108,13 @@ io.on('connection', function (socket) {
           }
            socket.emit("update_data","OK");
 
-           client.query('SELECT seri_number,last_token,email,name_product,editor,date,created_at FROM blynk_data', function (err, result_All) {
-            done();
+          //  client.query('SELECT seri_number,last_token,email,name_product,editor,date,created_at FROM blynk_data', function (err, result_All) {
+          //   done();
   
-            if (err) {
-              return console.error('error happened during query', err)
-            }
-            socket.emit("show_data",result_All.rows);
+          //   if (err) {
+          //     return console.error('error happened during query', err)
+          //   }
+            // socket.emit("show_data",result_All.rows);
           })
             
       });
