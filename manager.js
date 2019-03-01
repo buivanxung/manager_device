@@ -83,6 +83,7 @@ io.on('connection', function (socket) {
     last_token = d_string[1],
     new_token = d_string[2],
     email = d_string[3];
+    editor = d_string[4];
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
