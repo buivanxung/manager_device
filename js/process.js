@@ -20,7 +20,7 @@ var etable = "";
         });
         socket.on('show_data', function (data) {
            console.log(paseData(data));
-           $("#print_data").val() = paseData(data);
+           $("#print_data").html(paseData(data));
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
