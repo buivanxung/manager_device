@@ -23,6 +23,8 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
            $("#print_data").html(paseData(data));
            $("#update_seri_number" ).html(paseDataSeclect(data,1));
            $("#update_last_token" ).html(paseDataSeclect(data,2));
+           console.log($("#update_seri_number").val());
+           
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
