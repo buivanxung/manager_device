@@ -81,15 +81,13 @@ io.on('connection', function (socket) {
     var d_string = data.split('&'),
     seri_number = d_string[0],
     last_token = d_string[1],
-    new_token = d_string[5],
-    email = d_string[2],
-    name_product = d_string[3],
-    editor = d_string[4];
+    new_token = d_string[2],
+    email = d_string[3];
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
         }
-        client.query("update blynk_data set last_token = "+last_token+",new_token = "+new_token+",email = "+email+",name_product = "+name_product+",editor = "+editor+",update_at = NOW()) where seri_number = "+seri_number+"", function (err, result) {
+        client.query("update blynk_data set last_token = "+last_token+",new_token = "+new_token+",email = "+email+",editor = "+editor+",update_at = NOW()) where seri_number = "+seri_number+"", function (err, result) {
           done();
 
           if (err) {

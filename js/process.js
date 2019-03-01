@@ -1,6 +1,7 @@
 var socket;
 var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,new_seri_number,new_token;
 var etable = "";
+var update_last_token,update_seri_number,update_email, update_admin, update_new_token;
        $(document).ready(function() {
         socket = io.connect('http://wirelesstech.online:5060',{
           reconnection: true,
@@ -20,6 +21,8 @@ var etable = "";
         });
         socket.on('show_data', function (data) {
            $("#print_data").html(paseData(data));
+           $("#update_seri_number" ).html(paseDataSeclect(data,"update_seri_number",1));
+           $("#update_last_token" ).html(paseDataSeclect(data,"update_last_token",2));
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -28,6 +31,12 @@ var etable = "";
         new_name_product = $( "#new_name_product" ).val();
         new_admin = $( "#new_admin" ).val();
         infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
+        update_admin = $("input[name='update_admin']").val();
+        update_email = $("input[name='update_email']").val();
+        update_last_token = $("#update_last_token").val();
+        update_seri_number = $("#update_seri_number").val();
+        update_new_token = $("input[name='update_new_token']").val();
+        infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
     });
     function onSubmitNewdata(){
       socket.emit("new_data",infor_data);
@@ -64,4 +73,24 @@ var etable = "";
       }
       etable += "</table>";
       return etable;
+    }
+    function paseDataSeclect(object,id,name_sort) {
+      etable = "<select id = "+id+">";
+      switch(name_sort) {
+        case 1: {
+          for (var i = 0; i < object.length;i++){
+            etable += "<option> value = "+object[i].seri_number+"</option>";
+          }
+          etable += "</select>";
+          return etable;
+        }
+        case 2: {
+          for (var i = 0; i < object.length;i++){
+            etable += "<option> value = "+object[i].last_token+"</option>";
+          }
+          etable += "</select>";
+          return etable;
+        }
+      }
+      
     }
