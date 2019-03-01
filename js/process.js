@@ -39,19 +39,20 @@ var etable = "";
       socket.emit("update_data",infor_data_update);
     }
     function paseData(object) {
+      var obj = JSON.parse(object);
       etable = "<table id = log_data> <tr> ";
-      for (var i = 0; i < object.lengh();i++){
-        etable += "<td>" + object[i].id + "</td>" +
-        "<td>" + object[i].seri_number + "</td>"+
-        "<td>" + object[i].last_token + "</td>"+
-        "<td>" + object[i].new_token + "</td>"+
-        "<td>" + object[i].email + "</td>"+
-        "<td>" + object[i].name_product + "</td>"+
-        "<td>" + object[i].editor + "</td>"+
-        "<td>" + object[i].date + "</td>"+
-        "<td>" + object[i].created_at + "</td>"+
-        "<td>" + object[i].updated_at + "</td>"+
-        "<td>" + object[i].deleted_at + "</td>";
+      for (var i = 0; i < Object.keys(obj).length;i++){
+        etable += "<td>" + obj[i].id + "</td>" +
+        "<td>" + obj[i].seri_number + "</td>"+
+        "<td>" + obj[i].last_token + "</td>"+
+        "<td>" + obj[i].new_token + "</td>"+
+        "<td>" + obj[i].email + "</td>"+
+        "<td>" + obj[i].name_product + "</td>"+
+        "<td>" + obj[i].editor + "</td>"+
+        "<td>" + obj[i].date + "</td>"+
+        "<td>" + obj[i].created_at + "</td>"+
+        "<td>" + obj[i].updated_at + "</td>"+
+        "<td>" + obj[i].deleted_at + "</td>";
       }
       etable += "</tr></table>";
       return etable;
