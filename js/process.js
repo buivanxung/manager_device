@@ -79,14 +79,14 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
       switch(name_sort) {
         case 1: {
           for (var i = 0; i < object.length;i++){
-            etable += "<option> value = "+object[i].seri_number+"</option>";
+            etable += "<option value = "+object[i].seri_number+">"+object[i].seri_number+"</option>";
           }
           etable += "</select>";
           return etable;
         }
         case 2: {
           for (var i = 0; i < object.length;i++){
-            etable += "<option> value = "+object[i].last_token+"</option>";
+            etable += "<option value = "+object[i].last_token+">"+object[i].last_token+"</option>";
           }
           etable += "</select>";
           return etable;
