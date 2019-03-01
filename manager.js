@@ -83,7 +83,7 @@ io.on('connection', function (socket) {
               if (err) {
                 return console.error('error happened during query', err)
               }
-              socket.emit("show_data",result_All);
+              socket.emit("show_data",result_All.rows);
             })
               
         });
@@ -118,7 +118,7 @@ io.on('connection', function (socket) {
             if (err) {
               return console.error('error happened during query', err)
             }
-            socket.emit("show_data",result_All);
+            socket.emit("show_data",result_All.rows);
           })
             
       });
