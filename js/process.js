@@ -21,8 +21,8 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
         });
         socket.on('show_data', function (data) {
            $("#print_data").html(paseData(data));
-           $("#update_seri_number" ).html(paseDataSeclect(data,"update_seri_number",1));
-           $("#update_last_token" ).html(paseDataSeclect(data,"update_last_token",2));
+           $("#update_seri" ).html(paseDataSeclect(data,"update_seri_number",1));
+           $("#update_last" ).html(paseDataSeclect(data,"update_last_token",2));
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
