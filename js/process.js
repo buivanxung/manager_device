@@ -21,8 +21,8 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
         });
         socket.on('show_data', function (data) {
            $("#print_data").html(paseData(data));
-           $("#update_seri" ).html(paseDataSeclect(data,"updated_seri_number",1));
-           $("#update_last" ).html(paseDataSeclect(data,"updated_last_token",2));
+           $("#update_seri_number" ).html(paseDataSeclect(data,1));
+           $("#update_last_token" ).html(paseDataSeclect(data,2));
         });
         new_email = $("input[name='new_email']").val();
         new_token = $("input[name='new_token']").val();
@@ -75,8 +75,8 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
       etable += "</table>";
       return etable;
     }
-    function paseDataSeclect(object,id,name_sort) {
-      etable = "<select id = "+id+">";
+    function paseDataSeclect(object,name_sort) {
+      etable = "";
       switch(name_sort) {
         case 1: {
           for (var i = 0; i < object.length;i++){
@@ -89,7 +89,6 @@ var update_last_token,update_seri_number,update_email, update_admin, update_new_
           for (var i = 0; i < object.length;i++){
             etable += "<option value = "+object[i].last_token+">"+object[i].last_token+"</option>";
           }
-          etable += "</select>";
           return etable;
         }
       }
