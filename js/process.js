@@ -24,26 +24,28 @@ var etable = "";
            $("#update_seri" ).html(paseDataSeclect(data,1));
            $("#update_last" ).html(paseDataSeclect(data,2));
         });
-        new_email = $("input[name='new_email']").val();
-        new_token = $("input[name='new_token']").val();
-        new_seri_number = $("input[name='new_seri_number']").val();
-        new_date = $("input[name='new_date']").val();
-        new_name_product = $("#new_name_product" ).val();
-        new_admin = $("#new_admin" ).val();
-        infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
-        update_admin = $("#update_admin").val();
-        update_email = $("input[name='update_email']").val();
-        update_new_token = $("input[name='update_new_token']").val();
-        update_last_token = $("#update_last").val();
-        update_seri_number = $("#update_seri").val();
-        infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
-
     });
     function onSubmitNewdata(){
+
+      new_email = $("input[name='new_email']").val();
+      new_token = $("input[name='new_token']").val();
+      new_seri_number = $("input[name='new_seri_number']").val();
+      new_date = $("input[name='new_date']").val();
+      new_name_product = $("#new_name_product" ).val();
+      new_admin = $("#new_admin" ).val();
+      infor_data = new_seri_number+"&"+ new_token + "&"+ new_email + "&" + new_name_product + "&" + new_admin+ "&" + new_date;
+   
       socket.emit("new_data",infor_data);
       socket.emit("request_data","");
     }
     function onSubmitUpdatedata(){
+      update_admin = $("#update_admin").val();
+      update_email = $("input[name='update_email']").val();
+      update_new_token = $("input[name='update_new_token']").val();
+      update_last_token = $("#update_last").val();
+      update_seri_number = $("#update_seri").val();
+      infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
+
       console.log(infor_data_update);
       socket.emit("update_data",infor_data_update);
       socket.emit("request_data","");
