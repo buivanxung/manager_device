@@ -1,5 +1,5 @@
 var socket;
-var update_last_token,update_seri_number,update_email, update_admin, update_new_token;
+var update_last_token,update_seri_number,update_email, update_admin, update_new_token,statusDevice;
 var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,new_seri_number,new_token;
 var etable = "";
        $(document).ready(function() {
@@ -44,7 +44,8 @@ var etable = "";
       update_new_token = $("input[name='update_new_token']").val();
       update_last_token = $("#update_last").val();
       update_seri_number = $("#update_seri").val();
-      infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin;
+      statusDevice = $("input[name='statusDevice']").val();
+      infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin+"&"+statusDevice;
 
       console.log(infor_data_update);
       socket.emit("update_data",infor_data_update);

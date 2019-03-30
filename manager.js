@@ -36,11 +36,24 @@ app.get('/', function(req, res){
 	  });
     })
 });
-app.get('/checkConnection', function(req, res){
-  res.render("OK");
-});
-app.post('/checkConnection', function(req, res){
-  
+app.get('/clientCheck', function(req, res){
+  var seri = req.url.split("?");
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error('error fetching client from pool', err)
+    }
+    client.query('SELECT status,new_token FROM blynk_data WHERE seri_number='+seri[1]+'', function (err, result_status) {
+      done();
+
+      if (err) {
+        return console.error('error happened during query', err)
+      }
+    })
+})
+  if (result_status.rows != null) {
+    console.log(result_status.rows[0].status);
+  }
+  res.send("ON" + seri[1]);
 });
 io.on('connection', function (socket) {
   socket.on("request_data", function(data){
@@ -71,7 +84,7 @@ io.on('connection', function (socket) {
           if (err) {
             return console.error('error fetching client from pool', err)
           }
-          client.query("INSERT INTO blynk_data (seri_number,last_token,email,name_product,editor,date,created_at) VALUES('"+seri_number+"','"+last_token+"','"+email+"','"+name_product+"','"+editor+"','"+date+"','NOW()')", function (err, result) {
+          client.query("INSERT INTO blynk_data (seri_number,last_token,email,name_product,editor,status,date,created_at) VALUES('"+seri_number+"','"+last_token+"','"+email+"','"+name_product+"','"+editor+"','OF','"+date+"','NOW()')", function (err, result) {
             done();
   
             if (err) {
@@ -87,13 +100,14 @@ io.on('connection', function (socket) {
     seri_number = d_string[0],
     last_token = d_string[1],
     new_token = d_string[2],
-    email = d_string[3];
-    editor = d_string[4];
+    email = d_string[3],
+    editor = d_string[4],
+    status_device =d_string[5];
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
         }
-        client.query("update blynk_data set last_token = '"+last_token+"',new_token = '"+new_token+"',email = '"+email+"',editor = '"+editor+"',updated_at = 'NOW()' where seri_number = '"+seri_number+"'", function (err, result) {
+        client.query("update blynk_data set last_token = '"+last_token+"',new_token = '"+new_token+"',email = '"+email+"',editor = '"+editor+"',status = '"+status_device+"',updated_at = 'NOW()' where seri_number = '"+seri_number+"'", function (err, result) {
           done();
 
           if (err) {
