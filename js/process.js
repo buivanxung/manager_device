@@ -61,7 +61,7 @@ var etable = "";
       "<td> Name Product</td>"+
       "<td> Editor </td>"+
       "<td> Date</td>"+
-      "<td> Created At</td>"+
+      "<td> Status</td>"+
       "<td> Update At</td>"+
       "</tr> ";
       for (var i = 0; i < object.length;i++){
@@ -73,7 +73,7 @@ var etable = "";
         "<td>" + object[i].name_product + "</td>"+
         "<td>" + object[i].editor + "</td>"+
         "<td>" + object[i].date + "</td>"+
-        "<td>" + object[i].created_at + "</td>"+
+        "<td>" + object[i].status + "</td>"+
         "<td>" + object[i].updated_at + "</td>";
       }
       etable += "</table>";
