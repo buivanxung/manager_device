@@ -44,9 +44,7 @@ var etable = "";
       update_new_token = $("input[name='update_new_token']").val();
       update_last_token = $("#update_last").val();
       update_seri_number = $("#update_seri").val();
-      $('input').on('click', function() {
-        statusDevice = $("input[name='statusDevice']").val();
-      })
+      statusDevice = $("input[name='statusDevice']").val();
       infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin+"&"+statusDevice;
 
       console.log(infor_data_update);
