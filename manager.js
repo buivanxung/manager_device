@@ -52,16 +52,16 @@ app.get('/clientCheck', function(req, res){
       if (result_status.rows[0] != null) {
         status_device = result_status.rows[0].status;
         token_device = result_status.rows[0].new_token;
+        if (status_device == "ON") {
+          res.send("O" + token_device);
+        } else {
+          res.send("F");
+        }
+      }else{
+        res.send("F");
       }
     })
 })
-  console.log(status_device);
-  
-  if (status_device == "ON") {
-    res.send("ON" + token_device);
-  } else {
-    res.send("OF");
-  }
 });
 io.on('connection', function (socket) {
   socket.on("request_data", function(data){
