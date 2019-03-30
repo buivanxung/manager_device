@@ -50,12 +50,13 @@ app.get('/clientCheck', function(req, res){
         return console.error('error happened during query', err)
       }
       if (result_status.rows[0] != null) {
-        console.log(result_status.rows[0].status);
         status_device = result_status.rows[0].status;
         token_device = result_status.rows[0].new_token;
       }
     })
 })
+  console.log(status_device);
+  
   if (status_device == "ON") {
     res.send("ON" + token_device);
   } else {

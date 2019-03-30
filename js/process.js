@@ -47,7 +47,6 @@ var etable = "";
       statusDevice = $("input[name='statusDevice']:checked").val();
       infor_data_update = update_seri_number+"&"+update_last_token+"&"+update_new_token+"&"+update_email+"&"+update_admin+"&"+statusDevice;
 
-      console.log(infor_data_update);
       socket.emit("update_data",infor_data_update);
       socket.emit("request_data","");
     }
