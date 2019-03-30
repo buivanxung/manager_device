@@ -49,10 +49,10 @@ app.get('/clientCheck', function(req, res){
       if (err) {
         return console.error('error happened during query', err)
       }
-      if (result_status.rows != null) {
+      if (result_status.rows[0] != null) {
         console.log(result_status.rows[0].status);
         status_device = result_status.rows[0].status;
-        token_device = result_status.rows[1].new_token;
+        token_device = result_status.rows[0].new_token;
       }
     })
 })
@@ -110,6 +110,8 @@ io.on('connection', function (socket) {
     email = d_string[3],
     editor = d_string[4],
     status_device =d_string[5];
+    console.log(status_device);
+    
     pool.connect(function (err, client, done) {
         if (err) {
           return console.error('error fetching client from pool', err)
