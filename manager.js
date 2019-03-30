@@ -38,12 +38,11 @@ app.get('/', function(req, res){
 });
 app.get('/clientCheck', function(req, res){
   var seri = req.url.split("?");
-  var result_status;
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error('error fetching client from pool', err)
     }
-    client.query('SELECT status,new_token FROM blynk_data WHERE seri_number='+seri[1]+'', function (err, result_status) {
+    client.query("SELECT status,new_token FROM blynk_data WHERE seri_number='"+seri[1]+"'", function (err, result_status) {
       done();
 
       if (err) {
