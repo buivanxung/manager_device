@@ -36,6 +36,12 @@ app.get('/', function(req, res){
 	  });
     })
 });
+app.get('/checkConnection', function(req, res){
+  res.render("OK");
+});
+app.post('/checkConnection', function(req, res){
+  
+});
 io.on('connection', function (socket) {
   socket.on("request_data", function(data){
       pool.connect(function (err, client, done) {
