@@ -36,7 +36,7 @@ app.get('/', function(req, res){
 	  });
     })
 });
-app.get('/clientCheck', function(req, res){
+app.get('/check', function(req, res){
   var seri = req.url.split("?");
   var status_device,token_device;
   pool.connect(function (err, client, done) {
@@ -60,6 +60,22 @@ app.get('/clientCheck', function(req, res){
       }else{
         res.send("F");
       }
+    })
+})
+});
+app.get('/reques', function(req, res){
+  var seri = req.url.split("?");
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error('error fetching client from pool', err)
+    }
+    client.query("update blynk_data set status = 'OF' WHERE seri_number='"+seri[1]+"'", function (err, result_status) {
+      done();
+
+      if (err) {
+        return console.error('error happened during query', err)
+      }
+      res.send("F");
     })
 })
 });
@@ -124,6 +140,21 @@ io.on('connection', function (socket) {
             return console.error('error happened during query', err)
           }
            socket.emit("update_data","OK");
+        });
+    })
+  })
+  socket.on("one_device", function(data){
+    pool.connect(function (err, client, done) {
+        if (err) {
+          return console.error('error fetching client from pool', err)
+        }
+        client.query("select * from blynk_data where seri_number ='"+data+"'", function (err, result) {
+          done();
+
+          if (err) {
+            return console.error('error happened during query', err)
+          }
+           socket.emit("show_data",result.rows);
         });
     })
   })
