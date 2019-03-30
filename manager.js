@@ -38,6 +38,7 @@ app.get('/', function(req, res){
 });
 app.get('/clientCheck', function(req, res){
   var seri = req.url.split("?");
+  var result_status;
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error('error fetching client from pool', err)
@@ -48,11 +49,12 @@ app.get('/clientCheck', function(req, res){
       if (err) {
         return console.error('error happened during query', err)
       }
+      if (result_status.rows != null) {
+        console.log(result_status.rows[0].status);
+      }
     })
 })
-  if (result_status.rows != null) {
-    console.log(result_status.rows[0].status);
-  }
+  
   res.send("ON" + seri[1]);
 });
 io.on('connection', function (socket) {
