@@ -20,7 +20,32 @@ var configpg = {
 };
 var pool = new pg.Pool(configpg);
 
-app.get('/', function(req, res){
+app.get('/',function(req,res) {
+  var infor = req.url.split("?");
+  var raw = infor[1].split("&");
+  var seri = raw[0].split("=");
+  var token = raw[1].split("=");
+  var email = raw[3].split("=");
+  email = email.split("%40");
+  email= email[0] + "@" + email[1];
+  pool.connect(function (err, client, done) {
+    if (err) {
+      return console.error('error fetching client from pool', err)
+    }
+    client.query("update blynk_data set status = 'ON', new_token='"+token[1]+"' WHERE seri_number='"+seri[1]+"' && email='"+email[1]+"' ", function (err, result) {
+      done();
+
+      if (err) {
+          res.end();
+          return console.error('error happened during query', err)
+      }
+        res.send("Cap nhat thanh cong!");
+    });
+  })
+  res.send("Cap nhap loi!");
+})
+
+app.get('/data_admin', function(req, res){
     pool.connect(function (err, client, done) {
 	    if (err) {
 	      return console.error('error fetching client from pool', err)
@@ -33,7 +58,7 @@ app.get('/', function(req, res){
             return console.error('error happened during query', err)
 	      }
 	        res.render("index.ejs",{list:result});
-	  });
+	    });
     })
 });
 app.get('/check', function(req, res){
