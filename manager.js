@@ -37,10 +37,14 @@ app.get('/',function(req,res) {
       done();
 
       if (err) {
-          res.send("Cap nhat loi!");
+          res.end();
           return console.error('error happened during query', err)
       }
+      if (result.rows[0] == null ) {
+        res.send("Thong tin khong ton tai!");
+      }else{
         res.send("Cap nhat thanh cong!");
+      }
     });
   })
 })
