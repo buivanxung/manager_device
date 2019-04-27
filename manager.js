@@ -28,7 +28,6 @@ app.get('/',function(req,res) {
   var email = raw[3].split("=");
   email = email[1].split("%40");
   email= email[0] + "@" + email[1];
-  console.log(email);
   
   pool.connect(function (err, client, done) {
     if (err) {
@@ -38,13 +37,12 @@ app.get('/',function(req,res) {
       done();
 
       if (err) {
-          res.end();
+          res.send("Cap nhat loi!");
           return console.error('error happened during query', err)
       }
         res.send("Cap nhat thanh cong!");
     });
   })
-  res.send("Cap nhap loi!");
 })
 
 app.get('/data_admin', function(req, res){
