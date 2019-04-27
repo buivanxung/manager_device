@@ -32,7 +32,7 @@ app.get('/',function(req,res) {
     if (err) {
       return console.error('error fetching client from pool', err)
     }
-    client.query("update blynk_data set status = 'ON', new_token='"+token[1]+"' WHERE seri_number='"+seri[1]+"' && email='"+email[1]+"' ", function (err, result) {
+    client.query("update blynk_data set status = 'ON',new_token='"+token[1]+"' WHERE seri_number='"+seri[1]+"' AND email='"+email[1]+"' ", function (err, result) {
       done();
 
       if (err) {
