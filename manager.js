@@ -28,6 +28,8 @@ app.get('/',function(req,res) {
   var email = raw[3].split("=");
   email = email[1].split("%40");
   email= email[0] + "@" + email[1];
+  console.log(email);
+  
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error('error fetching client from pool', err)
