@@ -26,7 +26,7 @@ app.get('/',function(req,res) {
   var seri = raw[0].split("=");
   var token = raw[1].split("=");
   var email = raw[3].split("=");
-  email = email.split("%40");
+  email = email[1].split("%40");
   email= email[0] + "@" + email[1];
   pool.connect(function (err, client, done) {
     if (err) {
