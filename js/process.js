@@ -102,6 +102,12 @@ var etable = "";
           }
           return etable;
         }
+        case 3: {
+          for (var i = 0; i < object.length;i++){
+            etable += "<option value = "+object[i].last_token+">"+object[i].last_token+"</option>";
+          }
+          return etable;
+        }
       }
       
     }
