@@ -209,7 +209,7 @@ io.on('connection', function (socket) {
           if (err) {
             return console.error('error happened during query', err)
           }
-           socket.emit("show_data",result.rows);
+           socket.emit("one_data",result.rows);
         });
     })
   })

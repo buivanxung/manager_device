@@ -15,7 +15,12 @@ var etable = "";
           }
         });
         socket.on('free', function (data) {
-          $("#free_data").html(paseData(data));
+          $("#free_data").html(paseData(data,2));
+        });
+        socket.on('one_data', function (data) {
+          $("#update_last" ).html(paseDataSeclect(data,2));
+          $("#update_name_product" ).html(paseDataSeclect(data,3));
+          $("#update_email" ).html(paseDataSeclect(data,4));
         });
         socket.on('update_data', function (data) {
           if (data = "OK") {
@@ -23,7 +28,7 @@ var etable = "";
           }
         });
         socket.on('show_data', function (data) {
-           $("#print_data").html(paseData(data));
+           $("#print_data").html(paseData(data,1));
            $("#update_seri" ).html(paseDataSeclect(data,1));
            $("#update_last" ).html(paseDataSeclect(data,2));
         });
@@ -58,32 +63,51 @@ var etable = "";
       socket.emit("update_data",infor_data_update);
       socket.emit("request_data","");
     }
-    function paseData(object) {
-      etable = "<table id = log_data> <tr>"+
-      "<td> STT </td>"+
-      "<td> Serial Number</td>"+
-      "<td> Last Token</td>"+
-      "<td> New Token</td>"+
-      "<td> Email</td>"+
-      "<td> Name Product</td>"+
-      "<td> Editor </td>"+
-      "<td> Date</td>"+
-      "<td> Status</td>"+
-      "<td> Update At</td>"+
-      "</tr> ";
-      for (var i = 0; i < object.length;i++){
-        etable += "<tr> <td>" + object[i].id + "</td>" +
-        "<td>" + object[i].seri_number + "</td>"+
-        "<td>" + object[i].last_token + "</td>"+
-        "<td>" + object[i].new_token + "</td>"+
-        "<td>" + object[i].email + "</td>"+
-        "<td>" + object[i].name_product + "</td>"+
-        "<td>" + object[i].editor + "</td>"+
-        "<td>" + object[i].date + "</td>"+
-        "<td>" + object[i].status + "</td>"+
-        "<td>" + object[i].updated_at + "</td>";
+    function paseData(object, name_sort) {
+      switch(name_sort) {
+        case 1: {
+          etable = "<table id = log_data> <tr>"+
+          "<td> STT </td>"+
+          "<td> Serial Number</td>"+
+          "<td> Last Token</td>"+
+          "<td> New Token</td>"+
+          "<td> Email</td>"+
+          "<td> Name Product</td>"+
+          "<td> Editor </td>"+
+          "<td> Date</td>"+
+          "<td> Status</td>"+
+          "<td> Update At</td>"+
+          "</tr> ";
+          for (var i = 0; i < object.length;i++){
+            etable += "<tr> <td>" + object[i].id + "</td>" +
+            "<td>" + object[i].seri_number + "</td>"+
+            "<td>" + object[i].last_token + "</td>"+
+            "<td>" + object[i].new_token + "</td>"+
+            "<td>" + object[i].email + "</td>"+
+            "<td>" + object[i].name_product + "</td>"+
+            "<td>" + object[i].editor + "</td>"+
+            "<td>" + object[i].date + "</td>"+
+            "<td>" + object[i].status + "</td>"+
+            "<td>" + object[i].updated_at + "</td>";
+          }
+          etable += "</table>";
+        }
+        case 2: {
+          etable = "<table id = log_data> <tr>"+
+          "<td> STT </td>"+
+          "<td> Token</td>"+
+          "<td> Email</td>"+
+          "<td> Time</td>"+
+          "</tr> ";
+          for (var i = 0; i < object.length;i++){
+            etable += "<tr> <td>" + object[i].id + "</td>" +
+            "<td>" + object[i].token + "</td>"+
+            "<td>" + object[i].email + "</td>"+
+            "<td>" + object[i].ts + "</td>";
+          }
+          etable += "</table>";
+        }
       }
-      etable += "</table>";
       return etable;
     }
     function paseDataSeclect(object,name_sort) {
@@ -104,7 +128,13 @@ var etable = "";
         }
         case 3: {
           for (var i = 0; i < object.length;i++){
-            etable += "<option value = "+object[i].last_token+">"+object[i].last_token+"</option>";
+            etable += "<option value = "+object[i].name_product+">"+object[i].name_product+"</option>";
+          }
+          return etable;
+        }
+        case 4: {
+          for (var i = 0; i < object.length;i++){
+            etable += "<option value = "+object[i].email+">"+object[i].email+"</option>";
           }
           return etable;
         }
