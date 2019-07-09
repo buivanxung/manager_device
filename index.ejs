@@ -123,6 +123,7 @@
         <div class="data">
                 <table id = "log_data">
                         <tr >
+                        <td>STT</td>
                         <td>Token</td>
                         <td>Host</td>
                         <td>Email</td>
@@ -130,8 +131,9 @@
                         <td>Device_id</td>
                         <td>Time</td>
                         </tr>
-                        <% list.rows.forEach(function(d) { %>
+                        <% list.rows.forEach(function(number,index,d) { %>
                           <tr>
+                        <td><%= number %></td>
                         <td><%= d.token %></td>
                         <td><%= d.host %></td>
                         <td><%= d.email %></td>
