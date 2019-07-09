@@ -14,6 +14,9 @@ var etable = "";
            alert("Insert New Data Success!");
           }
         });
+        socket.on('free', function (data) {
+          $("#free_data").html(paseData(data));
+        });
         socket.on('update_data', function (data) {
           if (data = "OK") {
            alert("Update Data Success!");
@@ -24,9 +27,14 @@ var etable = "";
            $("#update_seri" ).html(paseDataSeclect(data,1));
            $("#update_last" ).html(paseDataSeclect(data,2));
         });
+        $("#update_seri").change(function(){
+            if (socket) {
+                socket.emit('one_device', $(this).val());
+              }
+        });
     });
-    function onSubmitNewdata(){
 
+    function onSubmitNewdata(){
       new_email = $("input[name='new_email']").val();
       new_token = $("input[name='new_token']").val();
       new_seri_number = $("input[name='new_seri_number']").val();

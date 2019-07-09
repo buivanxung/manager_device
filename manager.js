@@ -106,9 +106,22 @@ app.get('/reques', function(req, res){
       }
       res.send("F");
     })
-})
+  })
 });
 io.on('connection', function (socket) {
+    pool.connect(function (err, client, done) {
+      if (err) {
+        return console.error('error fetching client from pool', err)
+      }
+      client.query('SELECT * FROM blynk_data', function (err, result_All) {
+        done();
+
+        if (err) {
+          return console.error('error happened during query', err)
+        }
+        socket.emit("show_data",result_All.rows);
+      })
+  })
   socket.on("request_data", function(data){
       pool.connect(function (err, client, done) {
         if (err) {
@@ -187,6 +200,21 @@ io.on('connection', function (socket) {
         });
     })
   })
+    socket.on("free_data", function(data){
+      pool.connect(function (err, client, done) {
+          if (err) {
+            return console.error('error fetching client from pool', err)
+          }
+          client.query("SELECT * FROM forwarding_tokens f WHERE NOT EXISTS (SELECT * FROM blynk_data b WHERE f.token = b.new_token OR f.email = b.email)", function (err, result) {
+            done();
+
+            if (err) {
+              return console.error('error happened during query', err)
+            }
+            socket.emit("free",result.rows);
+          });
+      })
+    })
     
     socket.on('disconnect', function (){
     });
