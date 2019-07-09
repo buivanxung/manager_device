@@ -1,4 +1,3 @@
-import { log } from "util";
 
 var socket;
 var update_last_token,update_seri_number,update_email, update_admin, update_new_token,statusDevice;
@@ -18,7 +17,6 @@ var etable = "";
         });
         socket.on('free', function (data) {
           console.log(data);
-          
           $("#free_data").html(paseData(data,2));
         });
         socket.on('one_data', function (data) {
@@ -42,7 +40,6 @@ var etable = "";
               }
         });
     });
-
     function onSubmitNewdata(){
       new_email = $("input[name='new_email']").val();
       new_token = $("input[name='new_token']").val();
@@ -143,7 +140,6 @@ var etable = "";
           return etable;
         }
       }
-      
     }
     function onGetdata(){
       socket.emit("request_data","");
