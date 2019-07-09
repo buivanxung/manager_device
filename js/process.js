@@ -1,3 +1,5 @@
+import { log } from "util";
+
 var socket;
 var update_last_token,update_seri_number,update_email, update_admin, update_new_token,statusDevice;
 var infor_data,infor_data_update, new_admin,new_date,new_email,new_name_product,new_seri_number,new_token;
@@ -15,6 +17,8 @@ var etable = "";
           }
         });
         socket.on('free', function (data) {
+          console.log(data);
+          
           $("#free_data").html(paseData(data,2));
         });
         socket.on('one_data', function (data) {
@@ -100,7 +104,7 @@ var etable = "";
           "<td> Time</td>"+
           "</tr> ";
           for (var i = 0; i < object.length;i++){
-            etable += "<tr> <td>" + object[i].id + "</td>" +
+            etable += "<tr> <td>" + i + "</td>" +
             "<td>" + object[i].token + "</td>"+
             "<td>" + object[i].email + "</td>"+
             "<td>" + object[i].ts + "</td>";
