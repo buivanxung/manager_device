@@ -134,12 +134,12 @@
                         <% list.rows.forEach(function(number,index,d) { %>
                           <tr>
                         <td><%= index %></td>
-                        <td><%= d.token %></td>
-                        <td><%= d.host %></td>
-                        <td><%= d.email %></td>
-                        <td><%= d.project_id %></td>
-                        <td><%= d.device_id %></td>
-                        <td><%= d.ts %></td>
+                        <td><%= d[index].token %></td>
+                        <td><%= d[index].host %></td>
+                        <td><%= d[index].email %></td>
+                        <td><%= d[index].project_id %></td>
+                        <td><%= d[index].device_id %></td>
+                        <td><%= d[index].ts %></td>
                         </tr>
                       <% }); %>
                  </table>
