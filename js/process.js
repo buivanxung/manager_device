@@ -53,7 +53,7 @@ var etable = "";
     }
     function onSubmitUpdatedata(){
       update_admin = $("#update_admin").val();
-      update_email = $("input[name='update_email']").val();
+      update_email = $("#update_email").val();
       update_new_token = $("input[name='update_new_token']").val();
       update_last_token = $("#update_last").val();
       update_seri_number = $("#update_seri").val();
