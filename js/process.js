@@ -63,8 +63,8 @@ var etable = "";
       socket.emit("update_data",infor_data_update);
       socket.emit("request_data","");
     }
-    function paseData(object, name_sort) {
-      switch(name_sort) {
+    function paseData(object, name_sort2) {
+      switch(name_sort2) {
         case 1: {
           etable = "<table id = log_data> <tr>"+
           "<td> STT </td>"+
