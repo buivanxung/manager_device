@@ -16,7 +16,6 @@ var etable = "";
           }
         });
         socket.on('free', function (data) {
-          console.log(data);
           $("#free_data").html(paseData(data,2));
         });
         socket.on('one_data', function (data) {
@@ -30,7 +29,7 @@ var etable = "";
           }
         });
         socket.on('show_data', function (data) {
-           $("#print_data").html(paseData(data,1));
+           $("#print_data").html(paseData(data,1 ));
            $("#update_seri" ).html(paseDataSeclect(data,1));
            $("#update_last" ).html(paseDataSeclect(data,2));
         });
@@ -101,15 +100,15 @@ var etable = "";
           "<td> Time</td>"+
           "</tr> ";
           for (var i = 0; i < object.length;i++){
-            etable += "<tr> <td>" + i + "</td>" +
+            etable += "<tr> <td>" + object[i].id + "</td>" +
             "<td>" + object[i].token + "</td>"+
             "<td>" + object[i].email + "</td>"+
             "<td>" + object[i].ts + "</td>";
           }
           etable += "</table>";
         }
+        return etable;
       }
-      return etable;
     }
     function paseDataSeclect(object,name_sort) {
       etable = "";
