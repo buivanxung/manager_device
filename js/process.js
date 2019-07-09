@@ -64,6 +64,7 @@ var etable = "";
       socket.emit("request_data","");
     }
     function paseData(object, name_sort2) {
+      etable = "";
       switch(name_sort2) {
         case 1: {
           etable = "<table id = log_data> <tr>"+
@@ -91,6 +92,7 @@ var etable = "";
             "<td>" + object[i].updated_at + "</td>";
           }
           etable += "</table>";
+          return etable;
         }
         case 2: {
           etable = "<table id = log_data> <tr>"+
@@ -100,14 +102,14 @@ var etable = "";
           "<td> Time</td>"+
           "</tr> ";
           for (var i = 0; i < object.length;i++){
-            etable += "<tr> <td>" + object[i].id + "</td>" +
+            etable += "<tr> <td>" + i + "</td>" +
             "<td>" + object[i].token + "</td>"+
             "<td>" + object[i].email + "</td>"+
             "<td>" + object[i].ts + "</td>";
           }
           etable += "</table>";
+          return etable;
         }
-        return etable;
       }
     }
     function paseDataSeclect(object,name_sort) {
